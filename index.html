@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kagbanon Ruben — Data Scientist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ── CURSOR ── -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- ── HEADER ── -->
+<header class="header" id="header">
+  <a href="#home" class="logo">
+    <span class="logo-switcher" id="logoSwitcher">
+      <span class="logo-text">
+        <svg class="rk-logo-svg" width="54" height="38" viewBox="0 0 54 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="RK">
+          <defs>
+            <linearGradient id="rkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#00f5ff"/>
+              <stop offset="100%" stop-color="#7c3aed"/>
+            </linearGradient>
+            <filter id="rkGlow"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <path class="rk-s rk-s1" d="M3 3 L3 35" stroke="url(#rkGrad)" stroke-width="2.8" stroke-linecap="round" fill="none" filter="url(#rkGlow)"/>
+          <path class="rk-s rk-s2" d="M3 3 Q21 3 21 14 Q21 25 3 25" stroke="url(#rkGrad)" stroke-width="2.8" stroke-linecap="round" fill="none" filter="url(#rkGlow)"/>
+          <path class="rk-s rk-s3" d="M12 25 L21 35" stroke="url(#rkGrad)" stroke-width="2.8" stroke-linecap="round" fill="none" filter="url(#rkGlow)"/>
+          <path class="rk-s rk-s4" d="M30 3 L30 35" stroke="url(#rkGrad)" stroke-width="2.8" stroke-linecap="round" fill="none" filter="url(#rkGlow)"/>
+          <path class="rk-s rk-s5" d="M30 19 L49 3" stroke="url(#rkGrad)" stroke-width="2.8" stroke-linecap="round" fill="none" filter="url(#rkGlow)"/>
+          <path class="rk-s rk-s6" d="M30 19 L49 35" stroke="url(#rkGrad)" stroke-width="2.8" stroke-linecap="round" fill="none" filter="url(#rkGlow)"/>
+          <circle class="rk-dot" cx="52" cy="34" r="2.8" fill="#00f5ff" filter="url(#rkGlow)"/>
+        </svg>
+      </span>
+      <span class="logo-svg" aria-hidden="true"></span>
+    </span>
+  </a>
+  <nav class="navbar" id="navbar">
+    <a href="#home" class="nav-link active" data-section="home">Home</a>
+    <a href="#about" class="nav-link" data-section="about">About</a>
+    <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+    <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+    <a href="#certifications" class="nav-link" data-section="certifications">Certifications</a>
+    <a href="#resume" class="nav-link" data-section="resume">Resume</a>
+    <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+  </nav>
+  <div class="header-actions">
+    <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+      <span class="theme-icon" id="themeIcon">◐</span>
+    </button>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ── MOBILE MENU ── -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<nav class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <a href="#home" class="mobile-link">Home</a>
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#skills" class="mobile-link">Skills</a>
+  <a href="#projects" class="mobile-link">Projects</a>
+  <a href="#certifications" class="mobile-link">Certifications</a>
+  <a href="#resume" class="mobile-link">Resume</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <canvas class="grid-canvas" id="gridCanvas"></canvas>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge reveal">
+      <span class="badge-dot"></span>
+      Available for opportunities
+    </div>
+    <h1 class="hero-title reveal">
+      <span class="title-line">Kagbanon</span>
+      <span class="title-line accent-line">Ruben</span>
+    </h1>
+    <div class="hero-typed reveal">
+      <span class="typed-prefix">I craft </span>
+      <span class="typed-text" id="typedText"></span>
+      <span class="typed-cursor">|</span>
+    </div>
+    <p class="hero-desc reveal">
+      Turning raw data into strategic insights. I build intelligent models,
+      interactive dashboards &amp; scalable data pipelines that drive decisions.
+    </p>
+    <div class="hero-actions reveal">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="#contact" class="btn-ghost">Let's Talk</a>
+    </div>
+    <div class="hero-socials reveal">
+      <a href="https://linkedin.com" class="social-pill" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com" class="social-pill" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="/cdn-cgi/l/email-protection#dfa6b0aaad9fbab2beb6b3f1bcb0b2" class="social-pill">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email
+      </a>
+    </div>
+  </div>
+  <div class="hero-visual reveal">
+    <div class="glass-card hero-card">
+      <div class="card-header">
+        <div class="card-dots"><span></span><span></span><span></span></div>
+        <span class="card-label">model_performance.py</span>
+      </div>
+      <div class="code-block">
+        <div class="code-line"><span class="c-kw">import</span> <span class="c-mod">pandas</span> <span class="c-kw">as</span> pd</div>
+        <div class="code-line"><span class="c-kw">from</span> <span class="c-mod">sklearn.ensemble</span> <span class="c-kw">import</span> RandomForest</div>
+        <div class="code-line">&nbsp;</div>
+        <div class="code-line"><span class="c-fn">model</span> = RandomForest(n_estimators=<span class="c-num">200</span>)</div>
+        <div class="code-line"><span class="c-fn">model</span>.fit(X_train, y_train)</div>
+        <div class="code-line">&nbsp;</div>
+        <div class="code-line"><span class="c-cm"># Accuracy: 97.4%</span></div>
+        <div class="code-line"><span class="c-fn">score</span> = model.score(X_test, y_test)</div>
+      </div>
+      <div class="metric-row">
+        <div class="metric"><span class="metric-val">97.4<span class="metric-unit">%</span></span><span class="metric-lbl">Accuracy</span></div>
+        <div class="metric"><span class="metric-val">0.96<span class="metric-unit"></span></span><span class="metric-lbl">F1 Score</span></div>
+        <div class="metric"><span class="metric-val">2.1<span class="metric-unit">ms</span></span><span class="metric-lbl">Inference</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-tag reveal">About me</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <h2 class="section-title reveal">Passionate about <span class="neon">data-driven</span> decisions</h2>
+        <p class="about-desc reveal">
+          I'm Kagbanon Ruben, a Data Scientist and Analyst based in Côte d'Ivoire.
+          I specialize in transforming complex datasets into actionable intelligence —
+          from predictive modeling and machine learning to data visualization and business analytics.
+        </p>
+        <p class="about-desc reveal">
+          My approach combines rigorous statistical thinking with modern ML frameworks,
+          always focused on delivering measurable business impact through data.
+        </p>
+        <div class="about-stats reveal">
+          <div class="stat-card glass-card">
+            <span class="stat-num">10<span class="stat-plus">+</span></span>
+            <span class="stat-lbl">Projects</span>
+          </div>
+          <div class="stat-card glass-card">
+            <span class="stat-num">3<span class="stat-plus">+</span></span>
+            <span class="stat-lbl">Years Learning</span>
+          </div>
+          <div class="stat-card glass-card">
+            <span class="stat-num">5<span class="stat-plus">+</span></span>
+            <span class="stat-lbl">Certifications</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual reveal">
+        <div class="profile-wrap">
+          <div class="profile-ring"></div>
+          <div class="profile-img-placeholder">
+            <span class="profile-switcher">
+              <span class="logo-text profile-RK">
+                <svg class="rk-logo-svg rk-profile" width="60" height="44" viewBox="0 0 54 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="RK">
+                  <defs>
+                    <linearGradient id="rkGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#00f5ff"/>
+                      <stop offset="100%" stop-color="#7c3aed"/>
+                    </linearGradient>
+                    <filter id="rkGlow2"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                  </defs>
+                  <path class="rk-s rk-ps1" d="M3 3 L3 35" stroke="url(#rkGrad2)" stroke-width="2.8" stroke-linecap="round" fill="none" filter="url(#rkGlow2)"/>
+                  <path class="rk-s rk-ps2" d="M3 3 Q21 3 21 14 Q21 25 3 25" stroke="url(#rkGrad2)" stroke-width="2.8" stroke-linecap="round" fill="none" filter="url(#rkGlow2)"/>
+                  <path class="rk-s rk-ps3" d="M12 25 L21 35" stroke="url(#rkGrad2)" stroke-width="2.8" stroke-linecap="round" fill="none" filter="url(#rkGlow2)"/>
+                  <path class="rk-s rk-ps4" d="M30 3 L30 35" stroke="url(#rkGrad2)" stroke-width="2.8" stroke-linecap="round" fill="none" filter="url(#rkGlow2)"/>
+                  <path class="rk-s rk-ps5" d="M30 19 L49 3" stroke="url(#rkGrad2)" stroke-width="2.8" stroke-linecap="round" fill="none" filter="url(#rkGlow2)"/>
+                  <path class="rk-s rk-ps6" d="M30 19 L49 35" stroke="url(#rkGrad2)" stroke-width="2.8" stroke-linecap="round" fill="none" filter="url(#rkGlow2)"/>
+                  <circle class="rk-dot rk-pdot" cx="52" cy="34" r="2.8" fill="#00f5ff" filter="url(#rkGlow2)"/>
+                </svg>
+              </span>
+              <span class="logo-svg profile-svg-slot" aria-hidden="true"></span>
+            </span>
+          </div>
+          <div class="floating-badge fb-1 glass-card"><span>🤖</span> Machine Learning</div>
+          <div class="floating-badge fb-2 glass-card"><span>📊</span> Data Viz</div>
+          <div class="floating-badge fb-3 glass-card"><span>🐍</span> Python</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ── -->
+<section class="section section-alt" id="skills">
+  <div class="container">
+    <div class="section-tag reveal">Expertise</div>
+    <h2 class="section-title reveal">Skills &amp; <span class="neon">Technologies</span></h2>
+    <div class="skills-grid">
+
+      <div class="skill-category glass-card reveal">
+        <div class="skill-cat-icon">🧠</div>
+        <h3>Machine Learning</h3>
+        <div class="skill-bars">
+          <div class="skill-bar-item"><span>Scikit-learn</span><div class="bar"><div class="bar-fill" data-w="95"></div></div></div>
+          <div class="skill-bar-item"><span>TensorFlow</span><div class="bar"><div class="bar-fill" data-w="80"></div></div></div>
+          <div class="skill-bar-item"><span>PyTorch</span><div class="bar"><div class="bar-fill" data-w="75"></div></div></div>
+          <div class="skill-bar-item"><span>XGBoost</span><div class="bar"><div class="bar-fill" data-w="90"></div></div></div>
+        </div>
+      </div>
+
+      <div class="skill-category glass-card reveal">
+        <div class="skill-cat-icon">📊</div>
+        <h3>Data Analysis</h3>
+        <div class="skill-bars">
+          <div class="skill-bar-item"><span>Python / Pandas</span><div class="bar"><div class="bar-fill" data-w="98"></div></div></div>
+          <div class="skill-bar-item"><span>SQL / PostgreSQL</span><div class="bar"><div class="bar-fill" data-w="90"></div></div></div>
+          <div class="skill-bar-item"><span>R</span><div class="bar"><div class="bar-fill" data-w="70"></div></div></div>
+          <div class="skill-bar-item"><span>Excel / Power BI</span><div class="bar"><div class="bar-fill" data-w="85"></div></div></div>
+        </div>
+      </div>
+
+      <div class="skill-category glass-card reveal">
+        <div class="skill-cat-icon">🎨</div>
+        <h3>Visualization</h3>
+        <div class="skill-bars">
+          <div class="skill-bar-item"><span>Matplotlib / Seaborn</span><div class="bar"><div class="bar-fill" data-w="92"></div></div></div>
+          <div class="skill-bar-item"><span>Plotly / Dash</span><div class="bar"><div class="bar-fill" data-w="85"></div></div></div>
+          <div class="skill-bar-item"><span>Tableau</span><div class="bar"><div class="bar-fill" data-w="78"></div></div></div>
+          <div class="skill-bar-item"><span>D3.js</span><div class="bar"><div class="bar-fill" data-w="60"></div></div></div>
+        </div>
+      </div>
+
+      <div class="skill-category glass-card reveal">
+        <div class="skill-cat-icon">☁️</div>
+        <h3>Tools &amp; Cloud</h3>
+        <div class="skill-bars">
+          <div class="skill-bar-item"><span>Git / GitHub</span><div class="bar"><div class="bar-fill" data-w="90"></div></div></div>
+          <div class="skill-bar-item"><span>Docker</span><div class="bar"><div class="bar-fill" data-w="70"></div></div></div>
+          <div class="skill-bar-item"><span>AWS / GCP</span><div class="bar"><div class="bar-fill" data-w="65"></div></div></div>
+          <div class="skill-bar-item"><span>Jupyter / VS Code</span><div class="bar"><div class="bar-fill" data-w="98"></div></div></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tech-pills reveal">
+      <span class="tech-pill">NumPy</span><span class="tech-pill">Pandas</span>
+      <span class="tech-pill">Keras</span><span class="tech-pill">FastAPI</span>
+      <span class="tech-pill">Spark</span><span class="tech-pill">Airflow</span>
+      <span class="tech-pill">MongoDB</span><span class="tech-pill">Redis</span>
+      <span class="tech-pill">Streamlit</span><span class="tech-pill">MLflow</span>
+      <span class="tech-pill">HuggingFace</span><span class="tech-pill">LangChain</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
+<section class="section" id="projects">
+  <div class="container">
+    <div class="section-tag reveal">Portfolio</div>
+    <h2 class="section-title reveal">Featured <span class="neon">Projects</span></h2>
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="ml">Machine Learning</button>
+      <button class="filter-btn" data-filter="analytics">Analytics</button>
+      <button class="filter-btn" data-filter="nlp">NLP</button>
+      <button class="filter-btn" data-filter="viz">Visualization</button>
+    </div>
+    <div class="projects-grid">
+
+      <div class="project-card glass-card reveal" data-cat="ml">
+        <div class="project-img">
+          <div class="project-placeholder">
+            <span>📈</span>
+          </div>
+          <div class="project-overlay">
+            <a href="#" class="project-link">View Project →</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag tag-ml">ML</span>
+            <span class="tag tag-py">Python</span>
+            <span class="tag">Scikit-learn</span>
+          </div>
+          <h3>Churn Prediction Model</h3>
+          <p>Developed a customer churn prediction system using ensemble methods, achieving 97% accuracy. Integrated with a real-time dashboard for business teams.</p>
+          <div class="project-footer">
+            <a href="#" class="proj-btn">GitHub</a>
+            <a href="#" class="proj-btn proj-btn-accent">Live Demo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card glass-card reveal" data-cat="analytics">
+        <div class="project-img">
+          <div class="project-placeholder">
+            <span>📊</span>
+          </div>
+          <div class="project-overlay">
+            <a href="#" class="project-link">View Project →</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag tag-analytics">Analytics</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Power BI</span>
+          </div>
+          <h3>Sales Intelligence Dashboard</h3>
+          <p>Built an end-to-end analytics pipeline from raw CRM data to interactive Power BI dashboards, reducing reporting time by 80%.</p>
+          <div class="project-footer">
+            <a href="#" class="proj-btn">GitHub</a>
+            <a href="#" class="proj-btn proj-btn-accent">Live Demo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card glass-card reveal" data-cat="nlp">
+        <div class="project-img">
+          <div class="project-placeholder">
+            <span>🤖</span>
+          </div>
+          <div class="project-overlay">
+            <a href="#" class="project-link">View Project →</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag tag-nlp">NLP</span>
+            <span class="tag">Transformers</span>
+            <span class="tag">HuggingFace</span>
+          </div>
+          <h3>Sentiment Analysis API</h3>
+          <p>Fine-tuned a BERT model for French sentiment analysis on social media data. Deployed as a REST API with FastAPI, serving 1000+ req/min.</p>
+          <div class="project-footer">
+            <a href="#" class="proj-btn">GitHub</a>
+            <a href="#" class="proj-btn proj-btn-accent">Live Demo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card glass-card reveal" data-cat="viz">
+        <div class="project-img">
+          <div class="project-placeholder">
+            <span>🗺️</span>
+          </div>
+          <div class="project-overlay">
+            <a href="#" class="project-link">View Project →</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag tag-viz">Visualization</span>
+            <span class="tag">Plotly</span>
+            <span class="tag">Dash</span>
+          </div>
+          <h3>Africa Economic Data Explorer</h3>
+          <p>Interactive geospatial dashboard exploring economic indicators across African countries. Built with Plotly Dash and deployed on Heroku.</p>
+          <div class="project-footer">
+            <a href="#" class="proj-btn">GitHub</a>
+            <a href="#" class="proj-btn proj-btn-accent">Live Demo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card glass-card reveal" data-cat="ml">
+        <div class="project-img">
+          <div class="project-placeholder">
+            <span>🏥</span>
+          </div>
+          <div class="project-overlay">
+            <a href="#" class="project-link">View Project →</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag tag-ml">ML</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">CNN</span>
+          </div>
+          <h3>Medical Image Classifier</h3>
+          <p>Convolutional neural network for chest X-ray classification (pneumonia detection) with 94% sensitivity. Built with TensorFlow &amp; Keras.</p>
+          <div class="project-footer">
+            <a href="#" class="proj-btn">GitHub</a>
+            <a href="#" class="proj-btn proj-btn-accent">Live Demo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card glass-card reveal" data-cat="analytics">
+        <div class="project-img">
+          <div class="project-placeholder">
+            <span>💰</span>
+          </div>
+          <div class="project-overlay">
+            <a href="#" class="project-link">View Project →</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag tag-analytics">Analytics</span>
+            <span class="tag">Python</span>
+            <span class="tag">Time Series</span>
+          </div>
+          <h3>Stock Price Forecasting</h3>
+          <p>LSTM-based time series model forecasting stock prices with MAPE of 2.3%. Integrated with live market data via API and Streamlit frontend.</p>
+          <div class="project-footer">
+            <a href="#" class="proj-btn">GitHub</a>
+            <a href="#" class="proj-btn proj-btn-accent">Live Demo</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CERTIFICATIONS ── -->
+<section class="section section-alt" id="certifications">
+  <div class="container">
+    <div class="section-tag reveal">Credentials</div>
+    <h2 class="section-title reveal">Certifications &amp; <span class="neon">Achievements</span></h2>
+    <div class="certs-grid">
+
+      <div class="cert-card glass-card reveal">
+        <div class="cert-logo cert-google">G</div>
+        <div class="cert-body">
+          <div class="cert-issuer">Google</div>
+          <h3>Google Data Analytics Certificate</h3>
+          <div class="cert-meta">
+            <span class="cert-date">2024</span>
+            <span class="cert-badge verified">✓ Verified</span>
+          </div>
+        </div>
+        <a href="#" class="cert-link">View →</a>
+      </div>
+
+      <div class="cert-card glass-card reveal">
+        <div class="cert-logo cert-ibm">IBM</div>
+        <div class="cert-body">
+          <div class="cert-issuer">IBM</div>
+          <h3>IBM Data Science Professional Certificate</h3>
+          <div class="cert-meta">
+            <span class="cert-date">2023</span>
+            <span class="cert-badge verified">✓ Verified</span>
+          </div>
+        </div>
+        <a href="#" class="cert-link">View →</a>
+      </div>
+
+      <div class="cert-card glass-card reveal">
+        <div class="cert-logo cert-coursera">C</div>
+        <div class="cert-body">
+          <div class="cert-issuer">Coursera / DeepLearning.AI</div>
+          <h3>Deep Learning Specialization</h3>
+          <div class="cert-meta">
+            <span class="cert-date">2023</span>
+            <span class="cert-badge verified">✓ Verified</span>
+          </div>
+        </div>
+        <a href="#" class="cert-link">View →</a>
+      </div>
+
+      <div class="cert-card glass-card reveal">
+        <div class="cert-logo cert-aws">AWS</div>
+        <div class="cert-body">
+          <div class="cert-issuer">Amazon Web Services</div>
+          <h3>AWS Cloud Practitioner</h3>
+          <div class="cert-meta">
+            <span class="cert-date">2024</span>
+            <span class="cert-badge verified">✓ Verified</span>
+          </div>
+        </div>
+        <a href="#" class="cert-link">View →</a>
+      </div>
+
+      <div class="cert-card glass-card reveal">
+        <div class="cert-logo cert-microsoft">M</div>
+        <div class="cert-body">
+          <div class="cert-issuer">Microsoft</div>
+          <h3>Power BI Data Analyst Associate</h3>
+          <div class="cert-meta">
+            <span class="cert-date">2024</span>
+            <span class="cert-badge verified">✓ Verified</span>
+          </div>
+        </div>
+        <a href="#" class="cert-link">View →</a>
+      </div>
+
+      <div class="cert-card glass-card reveal">
+        <div class="cert-logo cert-kaggle">K</div>
+        <div class="cert-body">
+          <div class="cert-issuer">Kaggle</div>
+          <h3>Machine Learning &amp; Pandas Certifications</h3>
+          <div class="cert-meta">
+            <span class="cert-date">2023</span>
+            <span class="cert-badge verified">✓ Verified</span>
+          </div>
+        </div>
+        <a href="#" class="cert-link">View →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── RESUME ── -->
+<section class="section" id="resume">
+  <div class="container">
+    <div class="section-tag reveal">Experience</div>
+    <h2 class="section-title reveal">My <span class="neon">Journey</span></h2>
+    <div class="resume-grid">
+
+      <div class="resume-col">
+        <h3 class="resume-col-title reveal"><span class="neon-sm">◈</span> Education</h3>
+        <div class="timeline">
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card glass-card">
+              <div class="tl-header">
+                <span class="tl-year">2022 — 2025</span>
+                <span class="tl-status current">In progress</span>
+              </div>
+              <h4>Master in Data Science</h4>
+              <p class="tl-place">Université Félix Houphouët-Boigny, Abidjan</p>
+              <p class="tl-desc">Specialization in Machine Learning, Statistical Analysis and Big Data processing.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card glass-card">
+              <div class="tl-header">
+                <span class="tl-year">2019 — 2022</span>
+              </div>
+              <h4>Bachelor in Mathematics & Computer Science</h4>
+              <p class="tl-place">Université Félix Houphouët-Boigny, Abidjan</p>
+              <p class="tl-desc">Strong foundation in algorithms, statistics, and programming fundamentals.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="resume-col">
+        <h3 class="resume-col-title reveal"><span class="neon-sm">◈</span> Experience</h3>
+        <div class="timeline">
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card glass-card">
+              <div class="tl-header">
+                <span class="tl-year">2024 — Present</span>
+                <span class="tl-status current">Current</span>
+              </div>
+              <h4>Data Analyst Intern</h4>
+              <p class="tl-place">Company Name, Abidjan</p>
+              <p class="tl-desc">Built ETL pipelines and dashboards for business intelligence, reducing manual reporting by 80%.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card glass-card">
+              <div class="tl-header">
+                <span class="tl-year">2023</span>
+              </div>
+              <h4>Freelance Data Scientist</h4>
+              <p class="tl-place">Remote / Independent</p>
+              <p class="tl-desc">Delivered ML solutions for 5+ clients across e-commerce, finance and healthcare sectors.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="resume-cta reveal">
+      <a href="#" class="btn-primary">Download Full CV</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="section section-alt" id="contact">
+  <div class="container">
+    <div class="section-tag reveal">Get in touch</div>
+    <h2 class="section-title reveal">Let's <span class="neon">Connect</span></h2>
+    <div class="contact-grid">
+
+      <div class="contact-info reveal">
+        <p class="contact-intro">I'm open to freelance projects, full-time roles, and research collaborations. Let's build something meaningful with data.</p>
+        <div class="contact-items">
+          <a href="/cdn-cgi/l/email-protection#255c4a5057654048444c490b464a48" class="contact-item glass-card">
+            <span class="contact-icon">✉</span>
+            <div><strong>Email</strong><span><span class="__cf_email__" data-cfemail="b1c8dec4c3f1d4dcd0d8dd9fd2dedc">[email&#160;protected]</span></span></div>
+          </a>
+          <a href="https://linkedin.com" class="contact-item glass-card" target="_blank">
+            <span class="contact-icon">in</span>
+            <div><strong>LinkedIn</strong><span>Kagbanon Ruben</span></div>
+          </a>
+          <a href="https://github.com" class="contact-item glass-card" target="_blank">
+            <span class="contact-icon">⌥</span>
+            <div><strong>GitHub</strong><span>@your-username</span></div>
+          </a>
+        </div>
+      </div>
+
+      <form class="contact-form glass-card reveal" id="contactForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="your@email.com" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <input type="text" placeholder="Project / Collaboration / ...">
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea rows="5" placeholder="Tell me about your project..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary btn-full">Send Message ↗</button>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <span class="footer-logo">
+        <span class="logo-switcher footer-switcher">
+          <span class="logo-text">
+            <svg class="rk-logo-svg rk-footer" width="46" height="32" viewBox="0 0 54 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="RK">
+              <defs>
+                <linearGradient id="rkGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00f5ff"/>
+                  <stop offset="100%" stop-color="#7c3aed"/>
+                </linearGradient>
+                <filter id="rkGlow3"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              </defs>
+              <path class="rk-s rk-fs1" d="M3 3 L3 35" stroke="url(#rkGrad3)" stroke-width="2.8" stroke-linecap="round" fill="none" filter="url(#rkGlow3)"/>
+              <path class="rk-s rk-fs2" d="M3 3 Q21 3 21 14 Q21 25 3 25" stroke="url(#rkGrad3)" stroke-width="2.8" stroke-linecap="round" fill="none" filter="url(#rkGlow3)"/>
+              <path class="rk-s rk-fs3" d="M12 25 L21 35" stroke="url(#rkGrad3)" stroke-width="2.8" stroke-linecap="round" fill="none" filter="url(#rkGlow3)"/>
+              <path class="rk-s rk-fs4" d="M30 3 L30 35" stroke="url(#rkGrad3)" stroke-width="2.8" stroke-linecap="round" fill="none" filter="url(#rkGlow3)"/>
+              <path class="rk-s rk-fs5" d="M30 19 L49 3" stroke="url(#rkGrad3)" stroke-width="2.8" stroke-linecap="round" fill="none" filter="url(#rkGlow3)"/>
+              <path class="rk-s rk-fs6" d="M30 19 L49 35" stroke="url(#rkGrad3)" stroke-width="2.8" stroke-linecap="round" fill="none" filter="url(#rkGlow3)"/>
+              <circle class="rk-dot rk-fdot" cx="52" cy="34" r="2.8" fill="#00f5ff" filter="url(#rkGlow3)"/>
+            </svg>
+          </span>
+          <span class="logo-svg" aria-hidden="true"></span>
+        </span>
+      </span>
+      <p>© 2025 Kagbanon Ruben. Built with passion &amp; data.</p>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
