@@ -403,13 +403,16 @@ body.light .header.scrolled { background: rgba(240,240,255,0.95); }
 .profile-ring {
   position:absolute; inset:-12px; border-radius:50%;
   border:1.5px solid transparent;
-  background: linear-gradient(var(--bg),var(--bg)) padding-box,
-              linear-gradient(135deg,var(--neon),var(--neon2),transparent) border-box;
+  border-image-source: linear-gradient(135deg,var(--neon),var(--neon2),transparent);
+  border-image-slice: 1;
+  background: none;
   animation: spin 12s linear infinite;
+  z-index:2;
 }
 @keyframes spin { to { transform:rotate(360deg); } }
 
 .profile-img-placeholder {
+  position:relative; z-index:1;
   width:100%; height:100%; border-radius:50%;
   background: linear-gradient(135deg, var(--bg3), var(--bg2));
   border:1px solid var(--glass-border);
@@ -419,13 +422,16 @@ body.light .header.scrolled { background: rgba(240,240,255,0.95); }
   overflow:hidden;
 }
 .profile-img-placeholder img {
+  display:block;
   width:100%; height:100%; object-fit:cover;
+  border-radius:50%;
 }
 
 .floating-badge {
   position:absolute; padding:8px 14px;
   font-size:12px; font-weight:500; white-space:nowrap;
   animation: floatBadge 4s ease-in-out infinite;
+  z-index:4;
 }
 .fb-1 { top:-10px; right:-20px; animation-delay:0s; }
 .fb-2 { bottom:30px; right:-30px; animation-delay:-1.5s; }
