@@ -733,7 +733,7 @@ body.light .header.scrolled { background: rgba(240,240,255,0.95); }
   .certs-grid { grid-template-columns:repeat(2,1fr); }
   .about-grid { grid-template-columns:1fr; gap:48px; }
   .about-visual { order:-1; }
-  .profile-wrap { max-width:240px; }
+  .profile-wrap { max-width:240px; height:240px; }
 }
 
 @media (max-width:768px) {
@@ -774,7 +774,17 @@ body.light .header.scrolled { background: rgba(240,240,255,0.95); }
   .section-title { font-size:28px; }
   .about-stats { flex-direction:column; }
   .stat-card { min-width:100%; }
-  .floating-badge { display:none; }
+  .profile-wrap { max-width:200px; height:200px; }
+  .floating-badge {
+    display:block;
+    font-size:11px;
+    padding:6px 10px;
+    animation:none;
+  }
+  .fb-1 { top:-8px; right:-10px; }
+  .fb-2 { bottom:18px; right:-14px; }
+  .fb-3 { bottom:-8px; left:-10px; }
+  .fb-4 { top:14px; left:-14px; }
 }
 
 /* ===== LOGO SWITCHER (FNS ↔ SVG) ===== */
