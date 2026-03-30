@@ -1,0 +1,5 @@
+N’oublie pas de remplacer dans script.js :
+
+YOUR_EMAILJS_PUBLIC_KEY
+YOUR_EMAILJS_SERVICE_ID
+YOUR_EMAILJS_TEMPLATE_ID

@@ -255,6 +255,46 @@ filterBtns.forEach(btn => {
   });
 });
 
+// ── CONTACT FORM ──
+const contactForm = document.getElementById('contactForm');
+
+if (window.emailjs) {
+  emailjs.init('YOUR_EMAILJS_PUBLIC_KEY');
+}
+
+contactForm?.addEventListener('submit', e => {
+  e.preventDefault();
+  const btn = contactForm.querySelector('button[type="submit"]');
+  btn.disabled = true;
+  const originalText = btn.textContent;
+  btn.textContent = 'Sending...';
+
+  if (window.emailjs) {
+    emailjs.sendForm('YOUR_EMAILJS_SERVICE_ID', 'YOUR_EMAILJS_TEMPLATE_ID', contactForm)
+      .then(() => {
+        btn.textContent = '✓ Message sent!';
+        btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+        contactForm.reset();
+      }, () => {
+        btn.textContent = 'Send failed. Retry';
+        btn.style.background = 'linear-gradient(135deg, #f97316, #dc2626)';
+      })
+      .finally(() => {
+        setTimeout(() => {
+          btn.disabled = false;
+          btn.textContent = originalText;
+          btn.style.background = '';
+        }, 3000);
+      });
+  } else {
+    btn.textContent = 'EmailJS not loaded';
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.textContent = originalText;
+    }, 3000);
+  }
+});
+
 // ── SMOOTH SCROLL ──
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
