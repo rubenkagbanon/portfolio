@@ -47,7 +47,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 $smtpHost = 'smtp.gmail.com';
 $smtpPort = 587;
 $smtpUser = 'rubenkagbanon@gmail.com';
-$smtpPass = 'YOUR_GMAIL_APP_PASSWORD';
+$smtpPass = 'hrdy oymw dycx lrmu';
 $toAddress = 'rubenkagbanon@gmail.com';
 
 $body = "Vous avez reçu un nouveau message depuis le portfolio :\r\n\r\n";
