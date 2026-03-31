@@ -582,6 +582,12 @@ body.light .header.scrolled { background: rgba(240,240,255,0.95); }
   font-family:var(--font-display); font-weight:800; font-size:14px;
   flex-shrink:0;
 }
+.cert-logo img {
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
 .cert-google { background:#4285f420; color:#4285f4; border:1px solid #4285f430; }
 .cert-ibm { background:#0530ad20; color:#4f8ef7; border:1px solid #0530ad30; }
 .cert-coursera { background:#0056d220; color:#4f8ef7; border:1px solid #0056d230; }
