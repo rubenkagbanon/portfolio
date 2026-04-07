@@ -132,7 +132,7 @@ document.querySelectorAll('.cert-card[data-link]').forEach(card => {
 const revealEls = document.querySelectorAll('.reveal');
 
 const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach((entry, i) => {
+  entries.forEach(entry => {
     if (entry.isIntersecting) {
       const delay = entry.target.dataset.delay || 0;
       setTimeout(() => {
@@ -276,7 +276,7 @@ filterBtns.forEach(btn => {
 const contactForm = document.getElementById('contactForm');
 
 if (window.emailjs) {
-  emailjs.init('zNY6DfPspNqEMTqdu');
+  emailjs.init({ publicKey: 'zNY6DfPspNqEMTqdu' });
 }
 
 contactForm?.addEventListener('submit', e => {
