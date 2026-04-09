@@ -275,14 +275,25 @@ filterBtns.forEach(btn => {
 // ── CONTACT FORM ──
 const contactForm = document.getElementById('contactForm');
 
-if (window.emailjs) {
-  emailjs.init({ publicKey: 'zNY6DfPspNqEMTqdu' });
-}
+  // Attendre que la page soit complètement chargée
+  window.addEventListener('load', () => {
+  if (typeof emailjs !== 'undefined') {
+    emailjs.init({ publicKey: 'zNY6DfPspNqEMTqdu' });
+    console.log('✅ EmailJS initialisé');
+  } else {
+    console.error('❌ EmailJS non chargé');
+  }
+});
 
 contactForm?.addEventListener('submit', e => {
   e.preventDefault();
 
-  // Inject current time for template {{time}} variable
+  if (typeof emailjs === 'undefined') {
+    alert('Erreur : EmailJS non chargé. Vérifie ta connexion internet.');
+    return;
+  }
+
+  // Inject current time
   let timeInput = contactForm.querySelector('input[name="time"]');
   if (!timeInput) {
     timeInput = document.createElement('input');
@@ -290,37 +301,31 @@ contactForm?.addEventListener('submit', e => {
     timeInput.name = 'time';
     contactForm.appendChild(timeInput);
   }
-  timeInput.value = new Date().toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' });
+  timeInput.value = new Date().toLocaleString('fr-FR', { dateStyle: 'medium', timeStyle: 'short' });
 
   const btn = contactForm.querySelector('button[type="submit"]');
   btn.disabled = true;
   const originalText = btn.textContent;
-  btn.textContent = 'Sending...';
+  btn.textContent = 'Envoi en cours...';
 
-  if (window.emailjs) {
-    emailjs.sendForm('service_q6dctvo', 'template_46s53zc', contactForm)
-      .then(() => {
-        btn.textContent = '✓ Message sent!';
-        btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-        contactForm.reset();
-      }, () => {
-        btn.textContent = 'Send failed. Retry';
-        btn.style.background = 'linear-gradient(135deg, #f97316, #dc2626)';
-      })
-      .finally(() => {
-        setTimeout(() => {
-          btn.disabled = false;
-          btn.textContent = originalText;
-          btn.style.background = '';
-        }, 3000);
-      });
-  } else {
-    btn.textContent = 'EmailJS not loaded';
-    setTimeout(() => {
-      btn.disabled = false;
-      btn.textContent = originalText;
-    }, 3000);
-  }
+  emailjs.sendForm('service_q6dctvo', 'template_46s53zc', contactForm)
+    .then(() => {
+      btn.textContent = '✓ Message envoyé !';
+      btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+      contactForm.reset();
+    })
+    .catch((error) => {
+      console.error('EmailJS error:', error);
+      btn.textContent = 'Échec. Réessaie';
+      btn.style.background = 'linear-gradient(135deg, #f97316, #dc2626)';
+    })
+    .finally(() => {
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.textContent = originalText;
+        btn.style.background = '';
+      }, 3000);
+    });
 });
 
 // ── SMOOTH SCROLL ──
