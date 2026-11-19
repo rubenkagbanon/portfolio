@@ -215,7 +215,7 @@ if (skillSection) {
 
 // ── TYPED TEXT ──
 const typedEl = document.getElementById('typedText');
-const words = ['Data Scientist', 'ML Engineer', 'Data Analyst', 'BI Developer', 'Python Expert'];
+const words = ['Data Scientist', 'Mobile Apps', 'ML Engineer', 'React Native Apps', 'Data Analyst', 'Django Backends'];
 let wi = 0, ci = 0, deleting = false, pausing = false;
 
 function typeLoop() {

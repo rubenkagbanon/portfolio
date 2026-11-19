@@ -515,6 +515,10 @@ body.light .header.scrolled { background: rgba(240,240,255,0.95); }
   display:flex; align-items:center; justify-content:center;
   font-size:48px;
 }
+.project-video video {
+  height:100%; width:auto; display:block;
+  object-fit:contain;
+}
 .project-overlay {
   position:absolute; inset:0;
   background:rgba(0,245,255,0.1);
